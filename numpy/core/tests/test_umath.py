@@ -2908,7 +2908,6 @@ def test_complex_nan_comparisons():
                 assert_equal(x >= y, False, err_msg="%r >= %r" % (x, y))
                 assert_equal(x == y, False, err_msg="%r == %r" % (x, y))
 
-
 def test_rint_big_int():
     # np.rint bug for large integer values on Windows 32-bit and MKL
     # https://github.com/numpy/numpy/issues/6685
@@ -2918,12 +2917,10 @@ def test_rint_big_int():
     # Rint should not change the value
     assert_equal(val, np.rint(val))
 
-
 def test_signaling_nan_exceptions():
     with assert_no_warnings():
         a = np.ndarray(shape=(), dtype='float32', buffer=b'\x00\xe0\xbf\xff')
         np.isnan(a)
-
 
 def test_any_as_bool():
     """ Test if any return bool as desired"""
@@ -2933,7 +2930,6 @@ def test_any_as_bool():
     assert_equal(a, False)
     assert_equal(b, True)
     assert_equal(c, True)
-
 
 def test_all_as_bool():
     """ Test if all return bool as desired"""
