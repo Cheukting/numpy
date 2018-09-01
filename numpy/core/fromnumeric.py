@@ -2027,7 +2027,7 @@ def any(a, axis=None, out=None, keepdims=np._NoValue):
     (191614240, 191614240)
 
     """
-    return _wrapreduction(a, np.logical_or, 'any', axis, None, out, keepdims=keepdims)
+    return bool(_wrapreduction(a, np.logical_or, 'any', axis, None, out, keepdims=keepdims))
 
 
 def all(a, axis=None, out=None, keepdims=np._NoValue):
@@ -2103,7 +2103,8 @@ def all(a, axis=None, out=None, keepdims=np._NoValue):
     (28293632, 28293632, array([ True]))
 
     """
-    return _wrapreduction(a, np.logical_and, 'all', axis, None, out, keepdims=keepdims)
+    return bool(_wrapreduction(a, np.logical_and, 'all', axis, None, out,
+                keepdims=keepdims))
 
 
 def cumsum(a, axis=None, dtype=None, out=None):

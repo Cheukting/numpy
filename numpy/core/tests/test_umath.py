@@ -2923,3 +2923,23 @@ def test_signaling_nan_exceptions():
     with assert_no_warnings():
         a = np.ndarray(shape=(), dtype='float32', buffer=b'\x00\xe0\xbf\xff')
         np.isnan(a)
+
+
+def test_any_as_bool():
+    """ Test if any return bool as desired"""
+    a = np.any(np.zeros(2,dtype='O'))
+    b = np.any(np.ones(2,dtype='O'))
+    c = np.any(np.array([1,0],dtype='O'))
+    assert_equal(a, False)
+    assert_equal(b, True)
+    assert_equal(c, True)
+
+
+def test_all_as_bool():
+    """ Test if all return bool as desired"""
+    a = np.all(np.zeros(2,dtype='O'))
+    b = np.all(np.ones(2,dtype='O'))
+    c = np.all(np.array([1,0],dtype='O'))
+    assert_equal(a, False)
+    assert_equal(b, True)
+    assert_equal(c, False)
