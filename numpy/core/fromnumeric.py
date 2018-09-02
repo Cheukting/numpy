@@ -2029,6 +2029,8 @@ def any(a, axis=None, out=None, keepdims=np._NoValue):
     """
     result = _wrapreduction(a, np.logical_or, 'any', axis, None, out,
                             keepdims=keepdims)
+    if result is None:
+        return None
     if isinstance(result, int):
         return bool(result)
     else:
@@ -2110,6 +2112,8 @@ def all(a, axis=None, out=None, keepdims=np._NoValue):
     """
     result = _wrapreduction(a, np.logical_and, 'all', axis, None, out,
                             keepdims=keepdims)
+    if result is None:
+        return None
     if isinstance(result, int):
         return bool(result)
     else:
