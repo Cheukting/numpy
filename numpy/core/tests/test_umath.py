@@ -2924,18 +2924,22 @@ def test_signaling_nan_exceptions():
 
 def test_any_as_bool():
     """ Test if any return bool as desired"""
-    a = np.any(np.zeros(2,dtype='O'))
-    b = np.any(np.ones(2,dtype='O'))
-    c = np.any(np.array([1,0],dtype='O'))
-    assert_equal(a, False)
-    assert_equal(b, True)
-    assert_equal(c, True)
+    a = np.zeros(2, dtype='O')
+    b = np.ones(2, dtype='O')
+    c = np.array([1,0], dtype='O')
+    d = [a, b, c]
+    assert_equal(np.any(a), False)
+    assert_equal(np.any(b), True)
+    assert_equal(np.any(c), True)
+    assert_equal(np.any(d, axis=1), np.array([False, True, True]))
 
 def test_all_as_bool():
     """ Test if all return bool as desired"""
-    a = np.all(np.zeros(2,dtype='O'))
-    b = np.all(np.ones(2,dtype='O'))
-    c = np.all(np.array([1,0],dtype='O'))
-    assert_equal(a, False)
-    assert_equal(b, True)
-    assert_equal(c, False)
+    a = np.zeros(2, dtype='O')
+    b = np.ones(2, dtype='O')
+    c = np.array([1,0], dtype='O')
+    d = [a, b, c]
+    assert_equal(np.all(a), False)
+    assert_equal(np.all(b), True)
+    assert_equal(np.all(c), False)
+    assert_equal(np.all(d, axis=1), np.array([False, True, False]))
