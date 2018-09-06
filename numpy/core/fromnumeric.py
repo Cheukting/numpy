@@ -2031,10 +2031,10 @@ def any(a, axis=None, out=None, keepdims=np._NoValue):
                             keepdims=keepdims)
     if result is None:
         return None
-    if isinstance(result, int):
-        return bool(result)
-    else:
+    try:
         return result.astype('bool')
+    except:
+        return bool(result)
 
 
 def all(a, axis=None, out=None, keepdims=np._NoValue):
@@ -2114,10 +2114,10 @@ def all(a, axis=None, out=None, keepdims=np._NoValue):
                             keepdims=keepdims)
     if result is None:
         return None
-    if isinstance(result, int):
-        return bool(result)
-    else:
+    try:
         return result.astype('bool')
+    except:
+        return bool(result)
 
 
 def cumsum(a, axis=None, dtype=None, out=None):

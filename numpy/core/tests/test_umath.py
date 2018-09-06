@@ -2928,10 +2928,18 @@ def test_any_as_bool():
     b = np.ones(2, dtype='O')
     c = np.array([1,0], dtype='O')
     d = [a, b, c]
+    e = np.array([1.5, 2.4], dtype=object)
+    f = np.array([0.0, 2.4], dtype=object)
+    g = np.array([object(), 2.4], dtype=object)
+    h = np.array([np.array([3]), 0], dtype=object)
     assert_equal(np.any(a), False)
     assert_equal(np.any(b), True)
     assert_equal(np.any(c), True)
     assert_equal(np.any(d, axis=1), np.array([False, True, True]))
+    assert_equal(np.any(e), True)
+    assert_equal(np.any(f), True)
+    assert_equal(np.any(g), True)
+    assert_equal(np.any(h), True)
 
 def test_all_as_bool():
     """ Test if all return bool as desired"""
@@ -2939,7 +2947,15 @@ def test_all_as_bool():
     b = np.ones(2, dtype='O')
     c = np.array([1,0], dtype='O')
     d = [a, b, c]
+    e = np.array([1.5, 2.4], dtype=object)
+    f = np.array([0.0, 2.4], dtype=object)
+    g = np.array([object(), 2.4], dtype=object)
+    h = np.array([np.array([3]), 0], dtype=object)
     assert_equal(np.all(a), False)
     assert_equal(np.all(b), True)
     assert_equal(np.all(c), False)
     assert_equal(np.all(d, axis=1), np.array([False, True, False]))
+    assert_equal(np.all(e), True)
+    assert_equal(np.all(f), False)
+    assert_equal(np.all(g), True)
+    assert_equal(np.all(h), False)
